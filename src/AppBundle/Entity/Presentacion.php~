@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Presentacion
+ *
+ * @ORM\Table(name="presentacion", indexes={@ORM\Index(name="fk_presentacion_usuario1_idx", columns={"usuario_idUsuario"})})
+ * @ORM\Entity
+ */
+class Presentacion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idPresentacion", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpresentacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombres", type="string", length=45, nullable=true)
+     */
+    private $nombres = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=45, nullable=true)
+     */
+    private $apellidos = 'NULL';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaNac", type="date", nullable=true)
+     */
+    private $fechanac = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombresPapa", type="string", length=50, nullable=true)
+     */
+    private $nombrespapa = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombresMama", type="string", length=50, nullable=true)
+     */
+    private $nombresmama = 'NULL';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaPresentacion", type="date", nullable=true)
+     */
+    private $fechapresentacion = 'NULL';
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_idUsuario", referencedColumnName="idUsuario")
+     * })
+     */
+    private $usuariousuario;
+
+
+}
+

@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Caja
+ *
+ * @ORM\Table(name="caja", indexes={@ORM\Index(name="fk_Caja_Usuario1_idx", columns={"Usuario_idUsuario"})})
+ * @ORM\Entity
+ */
+class Caja
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idCaja", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcaja;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $total = 'NULL';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=true)
+     */
+    private $fecha = 'NULL';
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Usuario_idUsuario", referencedColumnName="idUsuario")
+     * })
+     */
+    private $usuariousuario;
+
+
+}
+

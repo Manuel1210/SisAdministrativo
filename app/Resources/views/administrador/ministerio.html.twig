@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="container-fluid">
+		<h3 class="alert alert-info">Ventana de asignacion</h3>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-danger" href="{{path('nuevoMinisterio')}}">
+				<i class="fa fa-plus"></i> Nuevo ministerio
+			</a><br><br>
+			<br>
+
+			<div class="panel panel-primary ">
+				<div class="panel-body">
+					<table class=" table table-bordered">
+						<tr>
+							<th>Nombre Ministerio</th>
+							<th>Fecha</th>
+							<th>Descripcion</th>
+						</tr>
+
+						<tbody>
+							{% for ministerio in ministerios %}
+							<tr>
+								<td>{{ministerio.Nombre}}</td>
+								<td>{{ministerio.Fecha|date('d/m/Y')}}</td>
+								<td>{{ministerio.Descripcion}}</td>
+
+								<td>
+									<a class="btn btn-info" href='{{path('detallesMinisterio', {id:ministerio.idMinisterio})}}'>
+										<i class="fas fa-info-circle fa-2x"></i> Detalles
+									</a>
+								</td>
+								
+							</tr>    
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+	</div>
+
+
+
+{% endblock %}

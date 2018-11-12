@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inoutcaja
+ *
+ * @ORM\Table(name="inoutcaja", indexes={@ORM\Index(name="fk_inoutcaja_caja1_idx", columns={"caja_idCaja"}), @ORM\Index(name="fk_inoutcaja_tipotransaccion1_idx", columns={"tipotransaccion_idtipotransaccion"})})
+ * @ORM\Entity
+ */
+class Inoutcaja
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idIngreso", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idingreso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=4000, nullable=true)
+     */
+    private $descripcion = 'NULL';
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cantidad", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $cantidad = 'NULL';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=true)
+     */
+    private $fecha = 'NULL';
+
+    /**
+     * @var \Caja
+     *
+     * @ORM\ManyToOne(targetEntity="Caja")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="caja_idCaja", referencedColumnName="idCaja")
+     * })
+     */
+    private $cajacaja;
+
+    /**
+     * @var \Tipotransaccion
+     *
+     * @ORM\ManyToOne(targetEntity="Tipotransaccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipotransaccion_idtipotransaccion", referencedColumnName="idtipotransaccion")
+     * })
+     */
+    private $tipotransacciontipotransaccion;
+
+
+}
+
